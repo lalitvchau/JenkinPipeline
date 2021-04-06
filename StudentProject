@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+    tools {
+        maven "Maven"
+    }
+    stages {
+        stage('checkout&build') {
+            steps {
+                git 'https://github.com/lalitvchau/StudentsRESTfulWithClient.git'
+                sh "mvn package"
+            }
+        }
+        stage('manual approval') {
+            steps {
+                input "Do you want to deploy to staging environment ?"
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh "StudentWebServiceProject/target/StudentWebServiceProject-0.0.1-SNAPSHOT.war /var/lib/tomcat9/webapps/Student.war"
+            }
+        }
+    }
+}
