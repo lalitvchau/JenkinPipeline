@@ -7,7 +7,7 @@ pipeline {
         stage('checkout&build') {
             steps {
                 git 'https://github.com/lalitvchau/StudentsRESTfulWithClient.git'
-                sh "mvn package"
+                sh "mvn package -f StudentWebServiceProject/pom.xml"
             }
         }
         stage('manual approval') {
