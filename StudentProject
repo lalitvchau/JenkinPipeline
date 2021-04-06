@@ -17,9 +17,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh "sudo -i"
-                sh "chmod 777 -R /var/lib/tomcat9"
-                sh "StudentWebServiceProject/target/StudentWebServiceProject-0.0.1-SNAPSHOT.war /var/lib/tomcat9/webapps/MyStudent.war"
+                sh "cp StudentWebServiceProject/target/StudentWebServiceProject-0.0.1-SNAPSHOT.war /var/lib/tomcat9/webapps/MyStudent.war"
             }
         }
     }
